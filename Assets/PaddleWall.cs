@@ -6,7 +6,7 @@ public class PaddleWall : MonoBehaviour
 {
 
     public float force = 10f;
-    public float upward = 4f;
+    public float upward = 2f;
 
     void OnTriggerEnter(Collider other)
     {
