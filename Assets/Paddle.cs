@@ -72,5 +72,4 @@ public class Paddle : MonoBehaviour
         upwardForce *= upwardForceMultiplier;
         return upwardForce;   
     }
-
 }

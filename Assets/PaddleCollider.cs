@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeftPaddleCollider : MonoBehaviour
+public class PaddleCollider : MonoBehaviour
 {
     public Paddle paddle;
     public Transform aimTarget;
     public Ball ball;
-    private bool hasServed = false;
+    private static bool hasServed = false;
 
 
     void OnTriggerEnter(Collider other)
