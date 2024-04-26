@@ -12,34 +12,40 @@ public class PaddleCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Vector3 dir = aimTarget.position - paddle.transform.position;
-        
-
-        if(!hasServed && other.CompareTag("Ball")) //for Table Tennis Serves
+        Debug.Log(hasServed);
+        if(other.CompareTag("Ball"))
         {
-            Rigidbody rb = other.GetComponent<Rigidbody>();
+            Vector3 dir = aimTarget.position - paddle.transform.position;
 
-            if(rb != null)
+            if(!hasServed)
             {
+                ball.SetCanFollow(false);
+
+                Rigidbody rb = other.GetComponent<Rigidbody>();
                 rb.useGravity = true;
                 rb.isKinematic = false;
+
+                other.GetComponent<Rigidbody>().velocity = paddle.ServeLaunch(dir.normalized);
+                Debug.Log("ServeLaunch: " + paddle.ServeLaunch(dir.normalized) + " hasServed: " + hasServed);   
+                hasServed = true;
             }
+            else
+            {
+                dir.y = 0;
+                float targetDistance = dir.magnitude;        
 
-            other.GetComponent<Rigidbody>().velocity = paddle.ServeLaunch(dir.normalized);
-            Debug.Log("ServeLaunch: " + paddle.ServeLaunch(dir.normalized));
-            ball.SetCanFollow(false);
-            hasServed = true;
+                float ballSpeed = paddle.BallLaunchSpeed(targetDistance);
+                float ballUplift = paddle.BallLaunchUplift(targetDistance);
+
+                other.GetComponent<Rigidbody>().velocity = dir.normalized * ballSpeed + new Vector3(0, ballUplift, 0);
+                Debug.Log("LaunchVelocity: " + other.GetComponent<Rigidbody>().velocity + " hasServed: " + hasServed);
+            }
         }
-        else if(other.CompareTag("Ball")) //After Table Tennis Serve
-        {
-            dir.y = 0;
-            float targetDistance = dir.magnitude;        
+    }
 
-            float ballSpeed = paddle.BallLaunchSpeed(targetDistance);
-            float ballUplift = paddle.BallLaunchUplift(targetDistance);
 
-            other.GetComponent<Rigidbody>().velocity = dir.normalized * ballSpeed + new Vector3(0, ballUplift, 0);
-            Debug.Log("LaunchVelocity: " + other.GetComponent<Rigidbody>().velocity);
-        }
+    public static void SetHasServed(bool value)
+    {
+        hasServed = value;
     }
 }

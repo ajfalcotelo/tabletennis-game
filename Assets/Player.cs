@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class scr : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public float speed = 1.5F;
     public float targetBoundOffset = 0.25f;
     public Transform aimTarget;
     public Collider targetBoundary;
     public Collider playerBoundary;
+    private Vector3 initialPos;
 
+
+    void Start()
+    {
+        initialPos = transform.position;
+    }
 
     void Update()
     {
@@ -37,5 +43,10 @@ public class scr : MonoBehaviour
             aimTarget.position = targetBoundPos;
         }
 
+    }
+
+    public void NewRound()
+    {
+        transform.position = initialPos;
     }
 }

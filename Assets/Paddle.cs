@@ -11,8 +11,8 @@ public class Paddle : MonoBehaviour
     public float serveVelocity = 5f;
     public float forceMultiplier = 1.2f;
     public float upwardForceMultiplier = 0.3f;
-    public GameObject leftPaddleCollider;
-    public GameObject rightPaddleCollider;
+    public GameObject leftPaddle;
+    public GameObject rightPaddle;
     private Collider leftCollider;
     private Collider rightCollider;
     private Vector3 originalPosition;
@@ -22,8 +22,8 @@ public class Paddle : MonoBehaviour
 
     void Start()
     {
-        leftCollider = leftPaddleCollider.GetComponent<Collider>();
-        rightCollider = rightPaddleCollider.GetComponent<Collider>();
+        leftCollider = leftPaddle.GetComponent<Collider>();
+        rightCollider = rightPaddle.GetComponent<Collider>();
         originalPosition = transform.localPosition;
         leftRotation = transform.rotation;
         leftCollider.enabled = false;
