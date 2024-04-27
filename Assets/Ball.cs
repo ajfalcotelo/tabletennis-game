@@ -6,49 +6,29 @@ using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
-    //All commented lines are code for floating ball after falling without relying on scene
-    // Vector3 initialPos;
-    // Paddle paddleObject;
-    public bool canFollow = true;
     public Transform paddle;
+    private bool canFollow = true;
+    private float ballOffset;
 
 
     void Start()
     {
-        // initialPos = transform.position;
-        // paddleObject = GameObject.FindObjectOfType<Paddle>();
+        ballOffset = paddle.position.z - 0.5f;
     }
+
 
     void Update()
     {
         if (canFollow)
         {
-            Vector3 targetPos = new Vector3(paddle.position.x, paddle.position.y, transform.position.z);
+            Vector3 targetPos = new Vector3(paddle.position.x, paddle.position.y, ballOffset);
             transform.position = targetPos;
         }
-    }
 
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Wall"))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            // Rigidbody rb = GetComponent<Rigidbody>();
-
-            // rb.velocity = Vector3.zero;
-            // rb.useGravity = false;
-            // rb.isKinematic = true;
-
-            // transform.position = initialPos;
-
-            RestartGame();
+            canFollow = true;
         }
-    }
-
-
-    void RestartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 
