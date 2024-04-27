@@ -10,13 +10,9 @@ public class PaddleWall : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-
         if(other.CompareTag("Ball"))
         {
-
             other.GetComponent<Rigidbody>().velocity = new Vector3(0, upward, force);
         }
-
     }
-
 }

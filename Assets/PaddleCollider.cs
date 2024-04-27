@@ -12,7 +12,7 @@ public class PaddleCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(hasServed);
+
         if(other.CompareTag("Ball"))
         {
             Vector3 dir = aimTarget.position - paddle.transform.position;

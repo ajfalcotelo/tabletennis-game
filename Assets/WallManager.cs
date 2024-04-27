@@ -12,16 +12,9 @@ public class WallManager : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
-
             PaddleCollider.SetHasServed(false);
             gameManager.AddPlayerScore(); //For Testing purposes
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-            // ball.ResetBall();
-            // paddleCollider.SetHasServed(false);
-            // player.NewRound();
-            // targetBoundary.NewRound();
         }
     }
-
 }

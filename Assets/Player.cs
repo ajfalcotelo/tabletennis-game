@@ -11,11 +11,6 @@ public class Player : MonoBehaviour
     private Vector3 initialPos;
 
 
-    void Start()
-    {
-        initialPos = transform.position;
-    }
-
     void Update()
     {
         float h1 = Input.GetAxisRaw("Horizontal1");
@@ -42,11 +37,5 @@ public class Player : MonoBehaviour
             targetBoundPos.z = Mathf.Clamp(targetBoundPos.z, targetBoundary.bounds.min.z + targetBoundOffset, targetBoundary.bounds.max.z - targetBoundOffset);
             aimTarget.position = targetBoundPos;
         }
-
-    }
-
-    public void NewRound()
-    {
-        transform.position = initialPos;
     }
 }

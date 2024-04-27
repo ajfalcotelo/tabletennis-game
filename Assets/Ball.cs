@@ -24,17 +24,9 @@ public class Ball : MonoBehaviour
         }
     }
 
+
     public void SetCanFollow(bool value)
     {
         canFollow = value;
-    }
-
-    public void ResetBall()
-    {
-        Rigidbody rb = GetComponent<Rigidbody>();
-        rb.velocity = Vector3.zero;
-        rb.useGravity = false;
-        rb.isKinematic = true;
-        canFollow = true;
     }
 }
