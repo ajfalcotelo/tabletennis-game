@@ -10,13 +10,13 @@ public class Paddle : MonoBehaviour
 {
     public float serveVelocity = 5f;
     public float forceMultiplier = 1.2f;
-    public float upwardForceMultiplier = 0.3f;
+    public float upwardForceMultiplier = 0.38f;
     public GameObject leftPaddle;
     public GameObject rightPaddle;
     private Collider leftCollider;
     private Collider rightCollider;
-    private Vector3 originalPosition;
-    private Quaternion leftRotation;
+    private Vector3 leftPaddlePos;
+    private Quaternion leftPaddleRotation;
     private bool isSwitched = false;
     
 
@@ -24,8 +24,8 @@ public class Paddle : MonoBehaviour
     {
         leftCollider = leftPaddle.GetComponent<Collider>();
         rightCollider = rightPaddle.GetComponent<Collider>();
-        originalPosition = transform.localPosition;
-        leftRotation = transform.rotation;
+        leftPaddlePos = transform.localPosition;
+        leftPaddleRotation = transform.rotation;
         leftCollider.enabled = false;
     }
 
@@ -36,16 +36,16 @@ public class Paddle : MonoBehaviour
         {
             leftCollider.enabled = false;
             rightCollider.enabled = true;
-            transform.localPosition = originalPosition;
-            transform.rotation = leftRotation;
+            transform.localPosition = leftPaddlePos;
+            transform.rotation = leftPaddleRotation;
             isSwitched = false;
         }
         else if (Input.GetKeyDown(KeyCode.Q) && !isSwitched)
         {
             leftCollider.enabled = true;
             rightCollider.enabled = false;
-            transform.localPosition = new Vector3(-originalPosition.x, originalPosition.y, originalPosition.z);
-            transform.rotation = Quaternion.Euler(-leftRotation.eulerAngles.x, leftRotation.eulerAngles.y, leftRotation.eulerAngles.z);
+            transform.localPosition = new Vector3(-leftPaddlePos.x, leftPaddlePos.y, leftPaddlePos.z);
+            transform.rotation = Quaternion.Euler(-leftPaddleRotation.eulerAngles.x, leftPaddleRotation.eulerAngles.y, leftPaddleRotation.eulerAngles.z);
             isSwitched = true;
         }
     }

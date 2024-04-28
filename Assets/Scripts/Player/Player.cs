@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     public Transform aimTarget;
     public Collider targetBoundary;
     public Collider playerBoundary;
-    private Vector3 initialPos;
 
 
     void Update()

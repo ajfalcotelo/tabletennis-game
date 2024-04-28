@@ -25,8 +25,7 @@ public class PaddleCollider : MonoBehaviour
                 rb.useGravity = true;
                 rb.isKinematic = false;
 
-                other.GetComponent<Rigidbody>().velocity = paddle.ServeLaunch(dir.normalized);
-                Debug.Log("ServeLaunch: " + paddle.ServeLaunch(dir.normalized) + " hasServed: " + hasServed);   
+                other.GetComponent<Rigidbody>().velocity = paddle.ServeLaunch(dir.normalized);  
                 hasServed = true;
             }
             else
@@ -37,8 +36,7 @@ public class PaddleCollider : MonoBehaviour
                 float ballSpeed = paddle.BallLaunchSpeed(targetDistance);
                 float ballUplift = paddle.BallLaunchUplift(targetDistance);
 
-                other.GetComponent<Rigidbody>().velocity = dir.normalized * ballSpeed + new Vector3(0, ballUplift, 0);
-                Debug.Log("LaunchVelocity: " + other.GetComponent<Rigidbody>().velocity + " hasServed: " + hasServed);
+                other.GetComponent<Rigidbody>().velocity = dir.normalized * ballSpeed + new Vector3(0, ballUplift, 0);    
             }
         }
     }
@@ -47,5 +45,11 @@ public class PaddleCollider : MonoBehaviour
     public static void SetHasServed(bool value)
     {
         hasServed = value;
+    }
+
+    
+    public static bool GetHasServed()
+    {
+        return hasServed;
     }
 }

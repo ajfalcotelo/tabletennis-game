@@ -12,8 +12,17 @@ public class WallManager : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
+            Debug.Log("ShouldScore: " + GameManager.GetPointToPlayer());
+            if (GameManager.GetPointToPlayer() == true)
+            {
+                gameManager.AddPlayerScore();
+            }
+            else if (GameManager.GetPointToPlayer() == false)
+            {
+                gameManager.AddBotScore();
+            }
+
             PaddleCollider.SetHasServed(false);
-            gameManager.AddPlayerScore(); //For Testing purposes
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

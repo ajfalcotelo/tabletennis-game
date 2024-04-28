@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour
     public Transform paddle;
     private bool canFollow = true;
     private float ballOffset;
+    
 
     private void Start()
     {
