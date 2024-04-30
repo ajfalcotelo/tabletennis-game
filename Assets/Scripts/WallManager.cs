@@ -12,7 +12,6 @@ public class WallManager : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
-            Debug.Log("ShouldScore: " + GameManager.GetPointToPlayer());
             if (GameManager.GetPointToPlayer() == true)
             {
                 gameManager.AddPlayerScore();

@@ -9,7 +9,6 @@ public class BotIn : MonoBehaviour
         if (other.CompareTag("Ball"))
         {
             GameManager.SetPointToPlayer(true);
-            Debug.Log(GameManager.GetPointToPlayer());
         }
     }
 }

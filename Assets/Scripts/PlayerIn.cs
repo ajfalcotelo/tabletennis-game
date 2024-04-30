@@ -9,7 +9,6 @@ public class PlayerIn : MonoBehaviour
         if (other.CompareTag("Ball"))
         {
             GameManager.SetPointToPlayer(false);
-            Debug.Log(GameManager.GetPointToPlayer());
         }
     }
 }

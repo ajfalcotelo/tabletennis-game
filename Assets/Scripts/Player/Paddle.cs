@@ -10,7 +10,7 @@ public class Paddle : MonoBehaviour
 {
     public float serveVelocity = 5f;
     public float forceMultiplier = 1.2f;
-    public float upwardForceMultiplier = 0.38f;
+    public float upwardMultiplier = 0.38f;
     public GameObject leftPaddle;
     public GameObject rightPaddle;
     private Collider leftCollider;
@@ -51,25 +51,25 @@ public class Paddle : MonoBehaviour
     }
     
 
-    public Vector3 ServeLaunch(Vector3 directionNormalized) //used in PaddleColliders, fixed value
+    public Vector3 ServeLaunchSpeed(Vector3 dirNormalized) //used in PaddleColliders, fixed value
     {
-        Vector3 serveSpeed = directionNormalized * serveVelocity;
+        Vector3 serveSpeed = dirNormalized * serveVelocity;
         return serveSpeed;
     }
 
 
-    public float BallLaunchSpeed(float directionMagnitude) //used in PaddleColliders, dynamic value, calculates based on distance between position
+    public float BallLaunchSpeed(float dirMagnitude) //used in PaddleColliders, dynamic value, calculates based on distance between position
     {
-        float initialVelocity = Mathf.Sqrt(directionMagnitude * Physics.gravity.magnitude / Mathf.Sin(2f * Mathf.PI / 4));
+        float initialVelocity = Mathf.Sqrt(dirMagnitude * Physics.gravity.magnitude / Mathf.Sin(2f * Mathf.PI / 4));
         initialVelocity *= forceMultiplier;
         return initialVelocity;
     }
 
 
-    public float BallLaunchUplift(float directionMagnitude) //used in PaddleColliders, dynamic value, calculates based on distance between position
+    public float BallLaunchUplift(float dirMagnitude) //used in PaddleColliders, dynamic value, calculates based on distance between position
     {
-        float upwardForce = Mathf.Sqrt(directionMagnitude * Physics.gravity.magnitude);
-        upwardForce *= upwardForceMultiplier;
+        float upwardForce = Mathf.Sqrt(dirMagnitude * Physics.gravity.magnitude);
+        upwardForce *= upwardMultiplier;
         return upwardForce;   
     }
 }

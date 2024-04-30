@@ -7,20 +7,13 @@ public class Ball : MonoBehaviour
 {
     public Transform paddle;
     private bool canFollow = true;
-    private float ballOffset;
-    
-
-    private void Start()
-    {
-        ballOffset = paddle.position.z - 0.5f;
-    }
 
 
     private void Update()
     {
         if (canFollow)
         {
-            Vector3 targetPos = new Vector3(paddle.position.x, paddle.position.y, ballOffset);
+            Vector3 targetPos = new Vector3(paddle.position.x, paddle.position.y, paddle.position.z - 0.1f);
             transform.position = targetPos;
         }
     }

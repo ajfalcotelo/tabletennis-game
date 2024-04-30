@@ -551,13 +551,13 @@ Transform:
   m_GameObject: {fileID: 232154673}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.406, y: 1.2037395, z: 2.6870072}
+  m_LocalPosition: {x: 0.406, y: 1.2037395, z: 2.4820004}
   m_LocalScale: {x: 0.47088072, y: 0.6911234, z: 0.468375}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1386429780}
   - {fileID: 248292819}
-  - {fileID: 977741009}
+  - {fileID: 1329249889}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &248292818
@@ -612,8 +612,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.42998993, y: 0.55753255, z: 0.34691238}
-  m_Center: {x: -0.15596482, y: -0.2214973, z: 0.64833736}
+  m_Size: {x: 0.42998993, y: 0.55753255, z: 0.39259195}
+  m_Center: {x: -0.15596482, y: -0.2214973, z: 0.5601418}
 --- !u!114 &248292821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,9 +626,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67d3b3fb87195f44fa37c38fa9f715cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldownDuration: 1.2
   paddle: {fileID: 1386429776}
   aimTarget: {fileID: 152686361}
   ball: {fileID: 566161920}
+  playerBoundary: {fileID: 1853969326}
 --- !u!1 &385666227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,75 +1341,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 40.847, y: -178.852, z: 1.327}
---- !u!1 &977741008
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 977741009}
-  - component: {fileID: 977741011}
-  - component: {fileID: 977741010}
-  m_Layer: 0
-  m_Name: LeftPaddleCollider
-  m_TagString: PaddleCollider
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &977741009
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 977741008}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -1.311, y: 0.492, z: 1.167}
-  m_LocalScale: {x: 2.12368, y: 1.4469196, z: 2.1350415}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 232154678}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &977741010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 977741008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67d3b3fb87195f44fa37c38fa9f715cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paddle: {fileID: 1386429776}
-  aimTarget: {fileID: 152686361}
-  ball: {fileID: 566161920}
---- !u!65 &977741011
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 977741008}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.42998993, y: 0.55753255, z: 0.34691238}
-  m_Center: {x: -0.15596482, y: -0.2214973, z: 0.64833736}
 --- !u!1 &1044129340
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,6 +1605,77 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &1329249888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1329249889}
+  - component: {fileID: 1329249891}
+  - component: {fileID: 1329249890}
+  m_Layer: 0
+  m_Name: LeftPaddleCollider
+  m_TagString: PaddleCollider
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1329249889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329249888}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -1.311, y: 0.492, z: 1.167}
+  m_LocalScale: {x: 2.12368, y: 1.4469196, z: 2.1350415}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 232154678}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1329249890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329249888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d3b3fb87195f44fa37c38fa9f715cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownDuration: 1.2
+  paddle: {fileID: 1386429776}
+  aimTarget: {fileID: 152686361}
+  ball: {fileID: 566161920}
+  playerBoundary: {fileID: 1853969326}
+--- !u!65 &1329249891
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329249888}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.42998993, y: 0.55753255, z: 0.39259195}
+  m_Center: {x: -0.15596482, y: -0.2214973, z: 0.5601418}
 --- !u!1 &1386429775 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: c724c2cfb7e6cb247b2e89d44ad42631, type: 3}
@@ -1691,8 +1695,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serveVelocity: 7
   forceMultiplier: 1.2
-  upwardForceMultiplier: 0.38
-  leftPaddle: {fileID: 977741008}
+  upwardMultiplier: 0.38
+  serveUpwardMultiplier: 0.3
+  leftPaddle: {fileID: 1329249888}
   rightPaddle: {fileID: 248292818}
 --- !u!4 &1386429780 stripped
 Transform:
@@ -2189,6 +2194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1853969325}
   - component: {fileID: 1853969324}
+  - component: {fileID: 1853969326}
   m_Layer: 0
   m_Name: PlayerBoundary
   m_TagString: Untagged
@@ -2215,8 +2221,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.5848444, y: 0.081284404, z: 1.5967429}
-  m_Center: {x: -0.018398404, y: -0.4593578, z: 0.3845204}
+  m_Size: {x: 2.5848444, y: 0.081284404, z: 1.39148}
+  m_Center: {x: -0.018398404, y: -0.4593578, z: 0.4871517}
 --- !u!4 &1853969325
 Transform:
   m_ObjectHideFlags: 0
@@ -2232,6 +2238,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1853969326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853969323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3cb9378ad792774f932dcb1629a3b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1878097543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2258,7 +2276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1291743089180749403, guid: 5fecca7fcae2d06439e097fb18e80a25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.386
+      value: -0.045
       objectReference: {fileID: 0}
     - target: {fileID: 1291743089180749403, guid: 5fecca7fcae2d06439e097fb18e80a25, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2266,7 +2284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1291743089180749403, guid: 5fecca7fcae2d06439e097fb18e80a25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.113
+      value: 2.029
       objectReference: {fileID: 0}
     - target: {fileID: 1291743089180749403, guid: 5fecca7fcae2d06439e097fb18e80a25, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2355,7 +2373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b23147d43001ff44a6ba10eb5b788ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.5
+  moveSpeed: 2
   ball: {fileID: 566161925}
   botBoundary: {fileID: 1570827321}
   botFollowBoundary: {fileID: 928719236}
